@@ -1,0 +1,68 @@
+.wrapper-card {
+    @apply bg-[#303339] rounded-2xl;
+    @apply overflow-hidden;
+    //@apply flex-auto;
+    @apply h-[24rem];
+    //@apply my-10 mx-5;
+    //@apply cursor-pointer;
+
+    .img-container {
+        @apply h-2/3;
+        @apply w-full overflow-hidden;
+        @apply flex justify-center items-center;
+
+        .nft-img {
+            @apply w-full h-full object-cover;
+        }
+    }
+
+    .details {
+        @apply p-3;
+
+        .info {
+            @apply flex justify-between;
+            @apply text-[#e4e8eb] drop-shadow-xl;
+
+            .info-left {
+                @apply flex-wrap;
+                @apply flex-[0.6];
+
+                .collection-name {
+                    @apply font-semibold text-sm text-[#8a939b];
+                }
+                .asset-name {
+                    @apply font-bold text-lg mt-2;
+                }
+            }
+
+            .info-right {
+                @apply flex-[0.4] text-right;
+
+                .price-tag {
+                    @apply font-semibold text-sm text-[#8a939b];
+                }
+                .price-value {
+                    @apply flex justify-end;
+                    @apply text-xl font-bold;
+                    @apply mt-2;
+
+                    .eth-logo-card {
+                        @apply h-5 mr-2 mt-1;
+                    }
+                }
+            }
+        }
+
+        .likes {
+            @apply text-[#8a939b] font-bold;
+            @apply flex items-center justify-end;
+            @apply w-full;
+            //@apply mt-3;
+
+            .like-icon {
+                @apply text-xl mr-2;
+            }
+        }
+    }
+
+}

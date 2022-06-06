@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import './global.scss';
+@import './pages/index';
+@import './pages/collections';
+@import './pages/collectionId';
+@import './pages/nftId';
+
+@import './components/header';
+@import './components/hero';
+@import './components/nftCard';
+@import './components/collectionCard';
+@import './components/nft/nftImage';
+@import './components/nft/generalDetails';
+@import './components/nft/purchase';
+@import './components/walletSidebar';

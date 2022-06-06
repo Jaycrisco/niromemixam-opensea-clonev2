@@ -1,0 +1,104 @@
+.banner-image-container {
+    @apply h-[30vh] w-screen;
+    @apply overflow-hidden;
+    @apply flex justify-center items-center;
+
+    .banner-image {
+        @apply w-full object-cover;
+    }
+}
+
+.container-info {
+   @apply w-screen px-4 mb-10;
+
+    .mid-row {
+        @apply w-full;
+        @apply flex justify-center;
+        @apply text-white;
+    }
+    .end-row {
+        @apply w-full;
+        @apply flex justify-end;
+        @apply text-white;
+    }
+}
+
+.profile-img {
+    @apply w-40 h-40;
+    @apply object-cover;
+    @apply rounded-full border-2 border-[#202225];
+    @apply mt-[-4rem];
+}
+
+.social-icon-container {
+    @apply flex text-3xl mb-[-2rem];
+
+    .social-icon-wrapper {
+        @apply w-44;
+
+        .social-icon-content {
+            @apply flex justify-between container;
+            @apply text-[1.4rem] border-2 rounded-lg;
+            @apply px-2;
+
+            .social-icon {
+                @apply my-2;
+            }
+            .divider {
+                @apply border-r-2;
+            }
+        }
+    }
+}
+
+.collection-title {
+    @apply text-5xl font-bold mb-4;
+}
+.created-by {
+    @apply text-lg mb-4;
+}
+
+.stats-container {
+    @apply flex justify-between;
+    @apply w-[44vw];
+    @apply py-4 mb-4;
+    @apply border border-[#151b22];
+
+    .collection-stat {
+        @apply w-1/4;
+
+        .stat-value {
+            @apply flex justify-center items-center;
+            @apply text-3xl font-bold;
+            @apply w-full;
+
+            .eth-logo {
+                @apply h-6 mr-2;
+            }
+        }
+        .stat-name {
+           @apply text-lg w-full text-center;
+           @apply mt-1; 
+        }
+    }
+}
+
+.collection-description {
+    @apply text-[#8a939b] text-xl;
+    @apply max-w-lg;
+    @apply flex-wrap;
+    @apply mt-4;
+}
+
+.container-nft-card {
+    @apply flex justify-center flex-wrap;
+    @apply mx-auto;
+
+    .nft-link {
+       @apply m-5;
+    }
+
+    .loader-card {
+        @apply w-full h-[100vh];
+    }
+}

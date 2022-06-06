@@ -1,0 +1,53 @@
+.wrapper-general-details {
+    @apply flex;
+
+    .info-container {
+        @apply flex flex-col flex-1 justify-between;
+        @apply h-36;
+        @apply mb-6;
+
+        .collection {
+            @apply text-[#2081e2];
+        }
+        .nft-title {
+            @apply text-3xl font-extrabold;
+        }
+        .other-info {
+            @apply flex;
+
+            .owned-by {
+                @apply text-[#8a939b] mr-4;
+
+                .accent {
+                    @apply text-[#2081e2];
+                }
+            }
+            .likes {
+                @apply flex items-center;
+                @apply text-[#8a939b];
+
+                .like-icon {
+                    @apply mr-1;
+                }
+            }
+        }
+    }
+
+    .action-buttons-container {
+        @apply w-44;
+
+        .action-buttons {
+            @apply flex justify-between;
+            @apply container;
+            @apply text-[1.4rem];
+            @apply border-2 rounded-lg;
+
+            .action-button {
+                @apply my-2;
+            }
+            .divider {
+                @apply border-r-2;
+            }
+        }
+    }
+}

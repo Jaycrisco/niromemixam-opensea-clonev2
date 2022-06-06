@@ -1,0 +1,54 @@
+.wrapper-purchase {
+    @apply flex flex-col ;
+    @apply w-full;
+    @apply px-6;
+    @apply bg-[#303339] rounded-xl;
+    @apply border border-[#151c22];
+
+    .price-container {
+        @apply mt-5;
+
+        .current {
+            @apply text-[#8a939b] mb-3;
+        }
+        .price {
+            @apply flex items-center;
+
+            .eth-logo {
+                @apply h-8 mr-4;
+            }
+            .price-text {
+                @apply text-4xl font-semibold;
+            }
+        }
+    }
+
+    .button-container {
+        @apply flex;
+        @apply my-5;
+
+        .button {
+            @apply flex items-center;
+            @apply py-2 px-12;
+            @apply mr-8;
+            @apply bg-[#2081e2] hover:bg-[#42a0ff];
+            @apply rounded-lg;
+            @apply cursor-pointer;
+    
+            .button-icon {
+                @apply text-xl;
+            }
+            .button-text {
+                @apply text-lg font-semibold;
+                @apply ml-2;
+            }
+        }
+        .offer {
+            @apply bg-[#363840] hover:bg-[#4c505c];
+            @apply border border-[#151c22]
+        }
+
+    }
+
+   
+}

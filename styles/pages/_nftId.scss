@@ -1,0 +1,27 @@
+.nft-wrapper {
+    @apply flex flex-col items-center;
+   // @apply container;
+    @apply text-[#e5e8eb];
+    @apply mt-10;
+
+    .nft-container {
+        @apply container p-6;
+
+        .top-content {
+            @apply flex;
+
+            .nft-img-container {
+                @apply mr-4 flex-[1.5];
+            }
+
+            .details-container {
+                @apply flex-[2] ml-4;
+            }
+        }
+    }
+}
+
+.loader-nft {
+    @apply w-full h-[100vh];
+    @apply flex justify-center items-center;
+}

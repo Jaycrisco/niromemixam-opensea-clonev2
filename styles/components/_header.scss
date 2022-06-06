@@ -1,0 +1,49 @@
+.wrapper-header {
+    @apply relative;
+    @apply bg-[#04111d];
+    @apply w-screen;
+    @apply px-[1.2rem];
+    @apply py-[0.8rem];
+    @apply flex;
+    @apply z-[120];
+
+    .logo-container {
+        @apply flex items-center;
+        @apply cursor-pointer;
+
+        .logo-text {
+            @apply ml-[0.8rem];
+            @apply text-white font-semibold text-2xl;
+        }
+    }
+
+    .search-bar {
+        @apply flex flex-1 items-center;
+        @apply mx-[0.8rem];
+       // @apply max-w-[520px];
+        @apply bg-[#363840] rounded-[0.8rem] hover:bg-[#4c505c];
+
+        .search-icon {
+            @apply mx-3;
+            @apply text-[#8a939b] font-bold text-lg;
+        }
+        .search-input {
+            @apply h-[2.6rem];
+            @apply w-full;
+            @apply border-0 bg-transparent outline-0 ring-0;
+            @apply px-2 pl-0;
+            @apply text-[#e6e8eb] placeholder:text-[#8a939b];
+        }
+    }
+
+    .header-items {
+        @apply flex items-center justify-end;
+
+        .header-item {
+            @apply px-4 font-bold text-[#c8cacd] hover:text-white cursor-pointer;
+        }
+        .header-icon {
+            @apply text-[#8a939b] text-3xl font-black px-4 hover:text-white cursor-pointer
+        }
+    }
+}

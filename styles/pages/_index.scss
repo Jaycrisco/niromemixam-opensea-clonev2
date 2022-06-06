@@ -1,0 +1,18 @@
+.wallet-connect-wrapper {
+  @apply flex flex-col justify-center items-center;
+  @apply h-screen w-screen;
+  @apply bg-[#3b3d42];
+
+  .button {
+    @apply border border-[#282b2f];
+    @apply bg-[#2081e2];
+    @apply p-[0.8rem];
+    @apply rounded-lg;
+    @apply text-xl font-semibold text-black;
+    @apply cursor-pointer;
+  }
+  .details {
+    @apply mt-4;
+    @apply text-lg text-center font-semibold;
+  }
+}

@@ -1,0 +1,24 @@
+.top-bar {
+    @apply bg-[#303339];
+    @apply border border-[#151c22];
+    @apply p-2;
+    @apply rounded-t-lg;
+
+    .top-bar-content {
+        @apply flex items-center;
+
+        .likes-counter {
+            @apply flex-1 flex items-center justify-end;
+
+            span {
+                @apply mx-1;
+            }
+        }
+    }
+}
+
+.nft-img {
+    @apply rounded-b-lg;
+    @apply overflow-hidden;
+    @apply border border-[#151c22];
+}

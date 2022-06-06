@@ -1,0 +1,64 @@
+.wrapper-hero {
+    @apply relative;
+
+    .container {
+        @apply before:content-[''] before:bg-red-500;
+        @apply before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0;
+        @apply before:bg-[url('https://lh3.googleusercontent.com/ujepnqpnL0nDQIHsWxlCXzyw4pf01yjz1Jmb4kAQHumJAPrSEj0-e3ABMZlZ1HEpJoqwOcY_kgnuJGzfXbd2Tijri66GXUtfN2MXQA=s250')];
+        @apply before:bg-cover before:bg-center before:opacity-30 before:blur;
+        
+        .content-wrapper {
+            @apply h-screen relative;
+            @apply flex justify-center flex-wrap items-center;
+
+            .copy-container {
+                @apply w-1/2;
+
+                .title {
+                    @apply relative text-white text-[46px] font-semibold;
+                }
+                .description {
+                    @apply w-[400px];
+                    @apply text-[#8a939b] text-2xl;
+                    @apply mt-[0.8rem] mb-[2.5rem];
+                }
+                .cta-container {
+                    @apply flex;
+
+                    .accent-button {
+                        @apply relative;
+                        @apply text-lg font-semibold text-white;
+                        @apply px-12 py-4 mr-5;
+                        @apply rounded-lg;
+                        @apply bg-[#2181e2] hover:bg-[#42a0ff];
+                        @apply cursor-pointer;
+                    }
+                    .button {
+                        @apply relative;
+                        @apply text-lg font-semibold text-white;
+                        @apply px-12 py-4 mr-5;
+                        @apply rounded-lg;
+                        @apply bg-[#363840] hover:bg-[#4c505c];
+                        @apply cursor-pointer;
+                    }
+                }
+            }
+            .card-container {
+                @apply rounded-[3rem];
+            }
+            .info-container {
+                @apply flex items-center;
+                @apply h-20;
+                @apply p-4;
+                @apply rounded-b-lg;
+                @apply text-white;
+                @apply bg-[#313338];
+
+                .author {
+                    @apply flex flex-col justify-center;
+                    @apply ml-4;
+                }
+            }
+        }
+    }
+}
