@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { PuffLoader } from "react-spinners";
 import CollectionCard from "../components/CollectionCard";
 import Header from "../components/Header";
 import { client } from "../lib/sanityClient";
@@ -39,9 +40,21 @@ const collections = () => {
       </div>
 
       <div className="container-collection-card">
-        {collections.map((collection, id) => (
-          <CollectionCard key={id} collection={collection} />
-        ))}
+        {collections.length > 0 ? (
+          <>
+            {collections.map((collection, id) => (
+              <CollectionCard key={id} collection={collection} />
+            ))}
+          </>
+        ) : (
+          <div className="loader-card">
+            <PuffLoader
+              color="#e4e8eb"
+              size={120}
+              css={{ margin: " 50px auto", display: "block" }}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

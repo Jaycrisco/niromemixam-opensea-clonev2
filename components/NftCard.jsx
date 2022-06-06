@@ -7,9 +7,9 @@ import ClipLoader from "react-spinners/ClipLoader"
 const NftCard = ({ nftItem, title, listings, collectionId }) => {
   const [isListed, setIsListed] = useState(false);
   const [price, setPrice] = useState(0);
-  
+
   useEffect(() => {
-    const listing = listings.find((listing) => listing.id === nftItem.id.toString());
+    const listing = listings.find((listing) => listing.asset.name === nftItem?.name);
     if (Boolean(listing)) {
       setIsListed(true);
       setPrice(listing.buyoutCurrencyValuePerToken.displayValue);

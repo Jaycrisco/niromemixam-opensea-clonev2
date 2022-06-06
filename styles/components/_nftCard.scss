@@ -23,9 +23,13 @@
             @apply flex justify-between;
             @apply text-[#e4e8eb] drop-shadow-xl;
 
+            .loader {
+                @apply h-[40px];
+            }
+
             .info-left {
                 @apply flex-wrap;
-                @apply flex-[0.6];
+                @apply flex-[0.7];
 
                 .collection-name {
                     @apply font-semibold text-sm text-[#8a939b];

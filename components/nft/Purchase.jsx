@@ -5,12 +5,77 @@ import { FaEthereum } from "react-icons/fa";
 import { useAddress } from "@thirdweb-dev/react";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
+import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 
-const Purchase = ({ isListed, listings, marketplace, nftId, owner }) => {
+const Purchase = ({
+  isListed,
+  marketplace,
+  nftId,
+  owner,
+  contract,
+  nftListed,
+}) => {
   const [loading, setLoading] = useState(false);
   const address = useAddress();
+  const idItemMarketplace = nftListed?.id;
 
-  const buyItem = async (listingId = nftId, quantityDesired = 1) => {
+  const listing = {
+    // address of the contract the asset you want to list is on
+    assetContractAddress: contract,
+    // token ID of the asset you want to list
+    tokenId: nftId,
+    // when should the listing open up for offers
+    startTimestamp: new Date(),
+    // how long the listing will be open for
+    listingDurationInSeconds: 86400,
+    // how many of the asset you want to list
+    quantity: 1,
+    // address of the currency contract that will be used to pay for the listing
+    currencyContractAddress: NATIVE_TOKEN_ADDRESS,
+    // how much the asset will be sold for
+    buyoutPricePerToken: "0.2",
+  };
+
+  const listItem = async () => {
+    setLoading(true);
+    try {
+      await marketplace.direct.createListing(listing);
+      confirmListing();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      if (error.code === 4001) {
+        transactionRejected();
+        setLoading(false);
+      } else {
+        otherError();
+        setLoading(false);
+      }
+    }
+  };
+
+  const cancelListing = async () => {
+    setLoading(true);
+    try {
+      await marketplace.direct.cancelListing(idItemMarketplace);
+      confirmCancelListing();
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+      if (error.code === 4001) {
+        transactionRejected();
+        setLoading(false);
+      } else {
+        otherError();
+        setLoading(false);
+      }
+    }
+  };
+
+  const buyItem = async (
+    listingId = idItemMarketplace,
+    quantityDesired = 1
+  ) => {
     setLoading(true);
     if (!address) {
       noWalletConnected();
@@ -32,6 +97,7 @@ const Purchase = ({ isListed, listings, marketplace, nftId, owner }) => {
       }
     }
   };
+
   const noWalletConnected = (toastHandler = toast) => {
     toastHandler.error(`Please connect your wallet`, {
       style: {
@@ -64,6 +130,22 @@ const Purchase = ({ isListed, listings, marketplace, nftId, owner }) => {
       },
     });
   };
+  const confirmListing = (toastHandler = toast) => {
+    toastHandler.success(`Item is listed !`, {
+      style: {
+        background: "#04111d",
+        color: "#fff",
+      },
+    });
+  };
+  const confirmCancelListing = (toastHandler = toast) => {
+    toastHandler.success(`Listing item canceled !`, {
+      style: {
+        background: "#04111d",
+        color: "#fff",
+      },
+    });
+  };
 
   return (
     <div className="wrapper-purchase">
@@ -81,16 +163,16 @@ const Purchase = ({ isListed, listings, marketplace, nftId, owner }) => {
                 />
                 {/* <FaEthereum className="eth-logo" /> */}
                 <div className="price-text">
-                  {listings?.buyoutCurrencyValuePerToken?.displayValue}
+                  {nftListed.buyoutCurrencyValuePerToken.displayValue}
                 </div>
               </div>
             </div>
-            {listings?.sellerAddress === address ? (
+            {nftListed?.sellerAddress === address ? (
               <div className="button-container">
                 <div
                   className="button"
                   onClick={() => {
-                    buyItem();
+                    cancelListing();
                   }}
                 >
                   {loading ? (
@@ -132,9 +214,20 @@ const Purchase = ({ isListed, listings, marketplace, nftId, owner }) => {
         <div className="main-container">
           {owner === address ? (
             <div className="button-container">
-              <div className="button">
-                <IoMdWallet className="button-icon" />
-                <div className="button-text">List Item</div>
+              <div
+                className="button"
+                onClick={() => {
+                  listItem();
+                }}
+              >
+                {loading ? (
+                  <ClipLoader color="#e4e8eb" />
+                ) : (
+                  <>
+                    <IoMdWallet className="button-icon" />
+                    <div className="button-text">List Item</div>
+                  </>
+                )}
               </div>
             </div>
           ) : (

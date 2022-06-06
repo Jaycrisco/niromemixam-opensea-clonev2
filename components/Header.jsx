@@ -52,7 +52,7 @@ const Header = () => {
         <Link href="/create">
           <div className="header-item">Create</div>
         </Link> */}
-          <Link href="/profile">
+          <Link href="#">
             <div className="header-icon">
               <CgProfile style={address && { color: "#4ad968" }} />
             </div>

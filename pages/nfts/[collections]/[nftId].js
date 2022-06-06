@@ -18,6 +18,7 @@ const Nft = () => {
   const [listings, setListings] = useState([]);
   const [collection, setCollection] = useState({});
   const [isListed, setIsListed] = useState(false);
+  const [nftListed, setNftListed] = useState();
   const address = useAddress();
   const router = useRouter();
   const { collections, nftId } = router.query;
@@ -51,20 +52,29 @@ const Nft = () => {
 
   const getListings = async () => {
     try {
-      const nftList = await marketplace.getListing(nftId);
-      if (nftList.assetContractAddress === collections) {
-        setListings(nftList);
-      }
+      const nftList = await marketplace.getActiveListings();
+      const listingContract = nftList.filter((item) => 
+        item.assetContractAddress === collections
+      );
+      setListings(listingContract);
     } catch (error) {
       console.log(error);
     }
   };
+  
+  // useEffect(() => {
+  //   if (listings.id === selectedNft?.metadata.id.toString()) {
+  //     setIsListed(true);
+  //   } else {
+  //     setIsListed(false);
+  //   }
+  // }, [listings, selectedNft]);
 
   useEffect(() => {
-    if (listings.id === selectedNft?.metadata.id.toString()) {
+    const listing = listings.find((listing) => listing.asset.name === selectedNft?.metadata.name);
+    if (Boolean(listing)) {
       setIsListed(true);
-    } else {
-      setIsListed(false);
+      setNftListed(listing)
     }
   }, [listings, selectedNft]);
 
@@ -101,10 +111,11 @@ const Nft = () => {
                 />
                 <Purchase
                   isListed={isListed}
-                  listings={listings}
+                  nftListed={nftListed}
                   marketplace={marketplace}
                   nftId={nftId}
                   owner={selectedNft.owner}
+                  contract ={collections}
                 />
               </div>
             </div>

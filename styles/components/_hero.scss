@@ -1,10 +1,11 @@
 .wrapper-hero {
     @apply relative;
 
-    .container {
+    .container-hero {
+        @apply w-full;
         @apply before:content-[''] before:bg-red-500;
         @apply before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0;
-        @apply before:bg-[url('https://lh3.googleusercontent.com/ujepnqpnL0nDQIHsWxlCXzyw4pf01yjz1Jmb4kAQHumJAPrSEj0-e3ABMZlZ1HEpJoqwOcY_kgnuJGzfXbd2Tijri66GXUtfN2MXQA=s250')];
+        @apply before:bg-[url('https://cdn.sanity.io/images/75n3h4qs/production/6228892ce1eec6803bffd3ea68c44adc2dd6086a-2100x600.gif')];
         @apply before:bg-cover before:bg-center before:opacity-30 before:blur;
         
         .content-wrapper {
@@ -45,6 +46,7 @@
             }
             .card-container {
                 @apply rounded-[3rem];
+                @apply w-[450px];
             }
             .info-container {
                 @apply flex items-center;

@@ -60,6 +60,7 @@ const Collection = () => {
   const getListings = async () => {
     try {
       const list = await marketplace.getActiveListings();
+
       const listingContract = list.filter((item) => 
         item.assetContractAddress === collectionId
       );
