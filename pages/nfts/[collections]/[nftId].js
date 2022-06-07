@@ -116,6 +116,7 @@ const Nft = () => {
                   nftId={nftId}
                   owner={selectedNft.owner}
                   contract ={collections}
+                  selectedNft={selectedNft}
                 />
               </div>
             </div>

@@ -22,7 +22,7 @@ const Collection = () => {
   const nftModule = useNFTCollection(collectionId);
 
   // Get all NFTs in a collection
-  useEffect(() => {
+  useMemo(() => {
     if (!nftModule) return;
     (async () => {
       const nfts = await nftModule.getAll();
@@ -52,11 +52,6 @@ const Collection = () => {
     "0xcb17BFFD2fC93405C55c193e7Ba3274bE4dE990b"
   );
 
-  useEffect(() => {
-    if (!marketplace) return;
-    getListings();
-  }, [marketplace]);
-
   const getListings = async () => {
     try {
       const list = await marketplace.getActiveListings();
@@ -69,6 +64,11 @@ const Collection = () => {
       console.log(error);
     }
   };
+
+  useMemo(() => {
+    if (!marketplace) return;
+    getListings();
+  }, [marketplace]);
 
   const fetchCollectionData = async (sanityClient = client) => {
     const query = `*[_type == "marketItems" && contractAddress == "${collectionId}" ] {

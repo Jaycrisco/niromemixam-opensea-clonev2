@@ -10,16 +10,17 @@ export default function Home() {
   const address = useAddress();
 
   const welcomeUser = (userName, toastHandler = toast) => {
+    console.log(userName);
     toastHandler.success(
       `Welcome back ${userName !== "Unnamed" ? ` ${userName}` : ""}!`,
       {
         style: {
           background: "#04111d",
           color: "#fff",
+          maxWidth: "1000px",
         },
       }
     );
-    console.log("test");
   };
 
   useEffect(() => {

@@ -6,6 +6,7 @@ import { useAddress } from "@thirdweb-dev/react";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
 import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
+import ListItem from "./ListItem";
 
 const Purchase = ({
   isListed,
@@ -14,8 +15,10 @@ const Purchase = ({
   owner,
   contract,
   nftListed,
+  selectedNft,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [toggleListItem, setToggleListItem] = useState(false);
   const address = useAddress();
   const idItemMarketplace = nftListed?.id;
 
@@ -147,61 +150,91 @@ const Purchase = ({
     });
   };
 
+  const toggleListItemFunc = () => {
+    setToggleListItem(!toggleListItem);
+  };
+
   return (
-    <div className="wrapper-purchase">
-      <Toaster position="bottom-left" reverseOrder={false} />
-      {isListed ? (
-        <>
-          <div className="main-container">
-            <div className="price-container">
-              <div className="current">Current Price</div>
-              <div className="price">
-                <img
-                  src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
-                  alt="eth-logo"
-                  className="eth-logo"
-                />
-                {/* <FaEthereum className="eth-logo" /> */}
-                <div className="price-text">
-                  {nftListed.buyoutCurrencyValuePerToken.displayValue}
+    <>
+      <div className="wrapper-purchase">
+        <Toaster position="bottom-left" reverseOrder={false} />
+        {isListed ? (
+          <>
+            <div className="main-container">
+              <div className="price-container">
+                <div className="current">Current Price</div>
+                <div className="price">
+                  <img
+                    src="https://openseauserdata.com/files/6f8e2979d428180222796ff4a33ab929.svg"
+                    alt="eth-logo"
+                    className="eth-logo"
+                  />
+                  {/* <FaEthereum className="eth-logo" /> */}
+                  <div className="price-text">
+                    {nftListed.buyoutCurrencyValuePerToken.displayValue}
+                  </div>
                 </div>
               </div>
+              {nftListed?.sellerAddress === address ? (
+                <div className="button-container">
+                  <div
+                    className="button"
+                    onClick={() => {
+                      cancelListing();
+                    }}
+                  >
+                    {loading ? (
+                      <ClipLoader color="#e4e8eb" />
+                    ) : (
+                      <>
+                        <IoMdWallet className="button-icon" />
+                        <div className="button-text">Cancel Listing</div>
+                      </>
+                    )}
+                  </div>
+                </div>
+              ) : (
+                <div className="button-container">
+                  <div
+                    className="button"
+                    onClick={() => {
+                      buyItem();
+                    }}
+                  >
+                    {loading ? (
+                      <ClipLoader color="#e4e8eb" />
+                    ) : (
+                      <>
+                        <IoMdWallet className="button-icon" />
+                        <div className="button-text">Buy Now</div>
+                      </>
+                    )}
+                  </div>
+                  <div className="offer button">
+                    <HiTag className="button-icon" />
+                    <div className="button-text">Make Offer</div>
+                  </div>
+                </div>
+              )}
             </div>
-            {nftListed?.sellerAddress === address ? (
+          </>
+        ) : (
+          <div className="main-container">
+            {owner === address ? (
               <div className="button-container">
-                <div
-                  className="button"
-                  onClick={() => {
-                    cancelListing();
-                  }}
-                >
+                <div className="button" onClick={toggleListItemFunc}>
                   {loading ? (
                     <ClipLoader color="#e4e8eb" />
                   ) : (
                     <>
                       <IoMdWallet className="button-icon" />
-                      <div className="button-text">Cancel Listing</div>
+                      <div className="button-text">List Item</div>
                     </>
                   )}
                 </div>
               </div>
             ) : (
               <div className="button-container">
-                <div
-                  className="button"
-                  onClick={() => {
-                    buyItem();
-                  }}
-                >
-                  {loading ? (
-                    <ClipLoader color="#e4e8eb" />
-                  ) : (
-                    <>
-                      <IoMdWallet className="button-icon" />
-                      <div className="button-text">Buy Now</div>
-                    </>
-                  )}
-                </div>
                 <div className="offer button">
                   <HiTag className="button-icon" />
                   <div className="button-text">Make Offer</div>
@@ -209,38 +242,17 @@ const Purchase = ({
               </div>
             )}
           </div>
-        </>
-      ) : (
-        <div className="main-container">
-          {owner === address ? (
-            <div className="button-container">
-              <div
-                className="button"
-                onClick={() => {
-                  listItem();
-                }}
-              >
-                {loading ? (
-                  <ClipLoader color="#e4e8eb" />
-                ) : (
-                  <>
-                    <IoMdWallet className="button-icon" />
-                    <div className="button-text">List Item</div>
-                  </>
-                )}
-              </div>
-            </div>
-          ) : (
-            <div className="button-container">
-              <div className="offer button">
-                <HiTag className="button-icon" />
-                <div className="button-text">Make Offer</div>
-              </div>
-            </div>
-          )}
-        </div>
+        )}
+      </div>
+      {toggleListItem && (
+        <ListItem
+          toggleListItemFunc={toggleListItemFunc}
+          selectedNft={selectedNft}
+          contract={contract}
+          marketplace={marketplace}
+        />
       )}
-    </div>
+    </>
   );
 };
 export default Purchase;

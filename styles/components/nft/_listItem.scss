@@ -1,0 +1,140 @@
+.modal {
+  @apply fixed top-0 left-0 w-screen h-screen;
+  @apply z-[80];
+
+  .background {
+    @apply fixed w-screen h-screen bg-black opacity-50;
+  }
+
+  .listing-wrapper {
+    @apply w-[800px] h-auto;
+    @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
+    @apply bg-[#202225];
+    @apply z-[90];
+    @apply border-2 rounded-xl border-[#8a939b];
+
+    .title {
+      @apply text-center text-3xl uppercase font-bold;
+      @apply border-b-2;
+      @apply py-3;
+    }
+    .container-card {
+      @apply flex;
+      @apply m-5;
+
+      .container-image {
+        @apply flex-[0.5] rounded-2xl;
+        @apply overflow-hidden;
+        @apply mr-5;
+
+        .nft-image {
+          @apply w-full h-full object-cover;
+        }
+      }
+
+      .container-form {
+        @apply flex flex-col items-center flex-[0.5];
+        @apply p-3;
+
+        .nft-name {
+          @apply text-2xl font-semibold;
+          @apply mb-3;
+        }
+
+        .form-listing {
+          .type-container {
+            @apply flex-[0.5];
+
+            .type-text {
+              @apply text-lg;
+            }
+            .type-choice {
+              @apply w-full h-16;
+              @apply my-2;
+              @apply flex justify-center;
+
+              .button-choice {
+                @apply w-1/2 flex justify-center items-center;
+                @apply p-2;
+                @apply text-xl font-semibold text-[#8a939b];
+              }
+
+              .fixed-price {
+                @apply border-2 rounded-tl-xl rounded-bl-xl;
+              }
+              .auction {
+                @apply border-2 rounded-tr-xl rounded-br-xl;
+              }
+              .selected {
+                @apply bg-white bg-opacity-10;
+              }
+            }
+          }
+
+          .price-container {
+            @apply flex-[0.5];
+            @apply mt-4;
+
+            .price-text {
+              @apply text-lg;
+            }
+
+            .price {
+              @apply flex justify-center items-center;
+              @apply my-3;
+
+              .eth-logo {
+                @apply h-8 mr-4;
+              }
+              .price-input {
+                @apply outline-none;
+                @apply bg-[#8a939b];
+                @apply w-full rounded-xl p-2;
+                @apply text-white text-lg font-semibold;
+                @apply placeholder:text-white;
+              }
+            }
+            .duration-container {
+              @apply flex justify-center items-center;
+              @apply my-2;
+
+              .duration {
+                @apply bg-[#8a939b];
+                @apply w-full rounded-xl p-2;
+                @apply text-white text-lg font-semibold;
+
+                .duration-choice {
+                  @apply text-black;
+                }
+              }
+            }
+            .buttons {
+              @apply flex justify-center;
+              @apply w-full;
+              @apply mt-10;
+
+              .button {
+                @apply flex items-center;
+                @apply px-6 py-3;
+                @apply mx-4;
+                @apply bg-[#2081e2] hover:bg-[#42a0ff];
+                @apply rounded-lg;
+                @apply cursor-pointer;
+                @apply text-[1.2rem] font-semibold;
+              }
+
+              .submit {
+              }
+              .cancel {
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .button-icon {
+    @apply mr-2;
+  }
+}
