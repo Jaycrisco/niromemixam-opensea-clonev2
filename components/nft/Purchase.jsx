@@ -5,14 +5,12 @@ import { FaEthereum } from "react-icons/fa";
 import { useAddress } from "@thirdweb-dev/react";
 import { useState } from "react";
 import { ClipLoader } from "react-spinners";
-import { NATIVE_TOKEN_ADDRESS } from "@thirdweb-dev/sdk";
 import ListItem from "./ListItem";
 
 const Purchase = ({
   isListed,
   marketplace,
   nftId,
-  owner,
   contract,
   nftListed,
   selectedNft,
@@ -21,41 +19,7 @@ const Purchase = ({
   const [toggleListItem, setToggleListItem] = useState(false);
   const address = useAddress();
   const idItemMarketplace = nftListed?.id;
-
-  const listing = {
-    // address of the contract the asset you want to list is on
-    assetContractAddress: contract,
-    // token ID of the asset you want to list
-    tokenId: nftId,
-    // when should the listing open up for offers
-    startTimestamp: new Date(),
-    // how long the listing will be open for
-    listingDurationInSeconds: 86400,
-    // how many of the asset you want to list
-    quantity: 1,
-    // address of the currency contract that will be used to pay for the listing
-    currencyContractAddress: NATIVE_TOKEN_ADDRESS,
-    // how much the asset will be sold for
-    buyoutPricePerToken: "0.2",
-  };
-
-  const listItem = async () => {
-    setLoading(true);
-    try {
-      await marketplace.direct.createListing(listing);
-      confirmListing();
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-      if (error.code === 4001) {
-        transactionRejected();
-        setLoading(false);
-      } else {
-        otherError();
-        setLoading(false);
-      }
-    }
-  };
+  const owner = nftListed?.sellerAddress;
 
   const cancelListing = async () => {
     setLoading(true);
@@ -175,7 +139,7 @@ const Purchase = ({
                   </div>
                 </div>
               </div>
-              {nftListed?.sellerAddress === address ? (
+              {owner === address ? (
                 <div className="button-container">
                   <div
                     className="button"
@@ -195,7 +159,8 @@ const Purchase = ({
                 </div>
               ) : (
                 <div className="button-container">
-                  <div
+                  {nftListed.type === 0 ? (
+                    <div
                     className="button"
                     onClick={() => {
                       buyItem();
@@ -210,6 +175,25 @@ const Purchase = ({
                       </>
                     )}
                   </div>
+                  ) : (
+                    <div
+                    className="button"
+                    onClick={() => {
+                      buyItem();
+                    }}
+                  >
+                    {loading ? (
+                      <ClipLoader color="#e4e8eb" />
+                    ) : (
+                      <>
+                        <IoMdWallet className="button-icon" />
+                        <div className="button-text">Place a bid</div>
+                      </>
+                    )}
+                  </div>
+
+                  )}
+                  
                   <div className="offer button">
                     <HiTag className="button-icon" />
                     <div className="button-text">Make Offer</div>
@@ -250,6 +234,10 @@ const Purchase = ({
           selectedNft={selectedNft}
           contract={contract}
           marketplace={marketplace}
+          nftId={nftId}
+          confirmListing={confirmListing}
+          otherError={otherError}
+          transactionRejected={transactionRejected}
         />
       )}
     </>

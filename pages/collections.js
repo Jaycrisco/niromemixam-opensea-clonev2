@@ -22,8 +22,6 @@ const collections = () => {
 
     const collectionData = await sanityClient.fetch(query);
 
-    console.log(collectionData);
-
     setCollections(collectionData);
   };
 

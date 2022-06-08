@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import openseaLogo from "../assets/opensea.png";
+import mondepluriel from "../assets/mondepluriel2.png"
 import { AiOutlineSearch } from "react-icons/ai";
 import { CgProfile } from "react-icons/cg";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
@@ -25,8 +26,8 @@ const Header = () => {
       <div className="wrapper-header">
         <Link href="/">
           <div className="logo-container">
-            <Image src={openseaLogo} height={40} width={40} />
-            <div className="logo-text">Opensea</div>
+            <Image src={mondepluriel} height={40} width={100} />
+            {/* <div className="logo-text">Opensea</div> */}
           </div>
         </Link>
         <div className="search-bar">

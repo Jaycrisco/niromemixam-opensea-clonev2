@@ -17,7 +17,7 @@ const GeneralDetails = ({ selectedNft, title, owner, address }) => {
             {owner === address ? (
               <span className="accent">you</span>
             ) : (
-              <span className="accent">{owner.slice(0, 6).toUpperCase()}</span>
+              <span className="accent">{owner?.slice(0, 6).toUpperCase()}</span>
             )}
           </div>
           {/* <div className="likes">

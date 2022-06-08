@@ -57,6 +57,7 @@
                 @apply w-1/2 flex justify-center items-center;
                 @apply p-2;
                 @apply text-xl font-semibold text-[#8a939b];
+                @apply cursor-pointer;
               }
 
               .fixed-price {
@@ -75,7 +76,7 @@
             @apply flex-[0.5];
             @apply mt-4;
 
-            .price-text {
+            .label-text {
               @apply text-lg;
             }
 
@@ -104,7 +105,7 @@
                 @apply text-white text-lg font-semibold;
 
                 .duration-choice {
-                  @apply text-black;
+                  @apply pointer-events-none;
                 }
               }
             }
@@ -121,9 +122,11 @@
                 @apply rounded-lg;
                 @apply cursor-pointer;
                 @apply text-[1.2rem] font-semibold;
+                @apply min-w-[140px];
               }
 
               .submit {
+                @apply justify-center;
               }
               .cancel {
               }
