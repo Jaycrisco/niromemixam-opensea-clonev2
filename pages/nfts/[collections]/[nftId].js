@@ -56,6 +56,7 @@ const Nft = () => {
       const listingContract = nftList.filter((item) => 
         item.assetContractAddress === collections
       );
+
       setListings(listingContract);
     } catch (error) {
       console.log(error);
@@ -72,9 +73,10 @@ const Nft = () => {
 
   useEffect(() => {
     const listing = listings.find((listing) => listing.asset.name === selectedNft?.metadata.name);
+
     if (Boolean(listing)) {
       setIsListed(true);
-      setNftListed(listing)
+      setNftListed(listing);
     }
   }, [listings, selectedNft]);
 
@@ -95,7 +97,7 @@ const Nft = () => {
   return (
     <div>
       <Header />
-      {nftListed ? (
+      {selectedNft ? (
         <div className="nft-wrapper">
           <div className="nft-container">
             <div className="top-content">
@@ -106,7 +108,7 @@ const Nft = () => {
                 <GeneralDetails
                   selectedNft={selectedNft?.metadata}
                   title={collection.title}
-                  owner={nftListed?.sellerAddress}
+                  owner={selectedNft?.owner}
                   address={address}
                 />
                 <Purchase
@@ -116,6 +118,7 @@ const Nft = () => {
                   nftId={nftId}
                   contract ={collections}
                   selectedNft={selectedNft}
+                  owner={selectedNft?.owner}
                 />
               </div>
             </div>

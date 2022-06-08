@@ -14,12 +14,12 @@ const Purchase = ({
   contract,
   nftListed,
   selectedNft,
+  owner,
 }) => {
   const [loading, setLoading] = useState(false);
   const [toggleListItem, setToggleListItem] = useState(false);
   const address = useAddress();
   const idItemMarketplace = nftListed?.id;
-  const owner = nftListed?.sellerAddress;
 
   const cancelListing = async () => {
     setLoading(true);
@@ -135,11 +135,11 @@ const Purchase = ({
                   />
                   {/* <FaEthereum className="eth-logo" /> */}
                   <div className="price-text">
-                    {nftListed.buyoutCurrencyValuePerToken.displayValue}
+                    {nftListed?.buyoutCurrencyValuePerToken?.displayValue}
                   </div>
                 </div>
               </div>
-              {owner === address ? (
+              {nftListed?.sellerAddress === address ? (
                 <div className="button-container">
                   <div
                     className="button"
