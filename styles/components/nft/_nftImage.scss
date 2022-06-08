@@ -21,4 +21,8 @@
     @apply rounded-b-lg;
     @apply overflow-hidden;
     @apply border border-[#151c22];
+
+    .img {
+        @apply w-full;
+    }
 }
