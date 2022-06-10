@@ -1,4 +1,4 @@
-import { useAddress } from "@thirdweb-dev/react";
+import { useAddress,  useNetworkMismatch,useNetwork } from "@thirdweb-dev/react";
 import { useEffect } from "react";
 import { client } from "../lib/sanityClient";
 import Header from "../components/Header";
@@ -24,6 +24,16 @@ export default function Home() {
 
   useEffect(() => {
     if (!address) return;
+
+    try {
+      if (networkMismatched) {
+        switchNetwork(3000);
+        return;
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    
     (async () => {
       const userDoc = {
         _type: "users",

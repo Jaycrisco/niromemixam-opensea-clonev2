@@ -1,15 +1,21 @@
-
 import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
 import "../styles/styles.scss";
+
+
+const connectors = {
+  injected: {}
+};
 
 
 function MyApp({ Component, pageProps }) {
   return (
     <ThirdwebProvider
-      desiredChainId={ChainId.Rinkeby}
+      connectors={connectors}
+      desiredChainId={3000}
       chainRpc={{
-        [ChainId.Rinkeby]:'https://eth-rinkeby.alchemyapi.io/v2/U-rqO0k-zQLCqAgNdinQCKVGZthAAMPr'
+        [3000]:'https://rpc.ech.network'
       }}
+      
       >
       <Component {...pageProps} />
     </ThirdwebProvider>
