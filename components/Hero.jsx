@@ -10,7 +10,7 @@ const Hero = () => {
               Discover, collect and sell extraordinary NFTs
             </div>
             <div className="description">
-              Opensea is the world&apos;s first and largest NFT marketplace
+              Maso MArket is the Echelons&apos;s Premire and largest NFT marketplace
             </div>
             <div className="cta-container">
               <button className="accent-button">Explore</button>
