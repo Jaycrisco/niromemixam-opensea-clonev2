@@ -7,10 +7,11 @@ const Hero = () => {
         <div className="content-wrapper">
           <div className="copy-container">
             <div className="title">
+              Maso Market your home to
               Discover, collect and sell extraordinary NFTs
             </div>
             <div className="description">
-              Opensea is the world&apos;s first and largest NFT marketplace
+              Maso Market is the Echelons&apos;s Premiere and largest NFT marketplace
             </div>
             <div className="cta-container">
               <button className="accent-button">Explore</button>
