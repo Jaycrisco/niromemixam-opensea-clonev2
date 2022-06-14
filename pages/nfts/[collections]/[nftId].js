@@ -42,7 +42,7 @@ const Nft = () => {
   }, [nftModule]);
 
   const marketplace = useMarketplace(
-    "0xcb17BFFD2fC93405C55c193e7Ba3274bE4dE990b"
+    "0x7e5de6E2e6CD46Fc3C40710A11428d7d92Cc992B"
   );
 
   useEffect(() => {
@@ -51,7 +51,13 @@ const Nft = () => {
   }, [marketplace]);
 
   const getListings = async () => {
+
+
+
     try {
+
+      const mynfts = await marketplace.getAll()
+      console.log(mynfts);  
       const nftList = await marketplace.getActiveListings();
       const listingContract = nftList.filter((item) => 
         item.assetContractAddress === collections
