@@ -21,20 +21,20 @@ const Hero = () => {
 
           <div className="card-container">
             <img
-              src="https://cdn.sanity.io/images/75n3h4qs/production/57e3d9defc2ba83f6c75dce7b54a0720b54863d0-1200x1200.png"
+              src="https://gateway.pinata.cloud/ipfs/QmR2oshArCb3B3frxX99LTmb2ym9xjpsHbV94PHz7c7AbF"
               alt="nft"
               className="rounded-t-lg"
             />
             <div className="info-container">
               <img
-                src="https://cdn.sanity.io/images/75n3h4qs/production/57e3d9defc2ba83f6c75dce7b54a0720b54863d0-1200x1200.png"
+                src="https://gateway.pinata.cloud/ipfs/QmR2oshArCb3B3frxX99LTmb2ym9xjpsHbV94PHz7c7AbF"
                 alt=""
                 className="h-[2.25rem] rounded-full"
               />
               <div className="author">
                 <div className="name">Momo</div>
-                <Link href="/collections/0x8459d4EC2a107d1d439D6C3d9Cad070d9A01009a">
-                  <a className="text-[#1868b7]">Invisible Man Test</a>
+                <Link href="/collections">
+                  <a className="text-[#1868b7]">The Maso</a>
                 </Link>
               </div>
             </div>
